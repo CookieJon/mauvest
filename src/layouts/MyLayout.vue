@@ -1,5 +1,5 @@
 <template>
-  <q-layout view="lHh Lpr lFf" :style="bgStyle">
+  <q-layout view="hHh LpR fFf" :style="bgStyle">
     <q-layout-header>
       <q-toolbar
         color="primary"
@@ -9,12 +9,10 @@
         <q-btn
           flat
           dense
-          round
           @click="leftDrawerOpen = !leftDrawerOpen"
           aria-label="Menu"
         >
           <q-icon name="menu" />
-          <p>{{ $q.platform.is.desktop }}</p>
         </q-btn>
 
         <q-toolbar-title>
@@ -28,12 +26,69 @@
       v-model="leftDrawerOpen"
       :content-class="$q.theme === 'mat' ? 'bg-grey-2' : null"
     >
-      <!-- <q-list
+      <q-list>
+        <q-collapsible icon="explore" label="First">
+          <div>
+            <q-field
+              icon="cloud"
+              label="Gmail"
+              helper="Helper"
+              :error="true"
+              error-label="We need a valid email"
+              :count="10"
+            >
+              <q-input suffix="@gmail.com" v-model="test1" />
+            </q-field>
+            <q-field
+              count
+            >
+              <q-select
+                v-model="test1"
+                :options="[
+                  {
+                    label: 'Google',
+                    icon: 'email',
+                    value: 'goog'
+                  },
+                  {
+                    label: 'Facebook',
+                    description: 'Enables communication',
+                    value: 'fb'
+                  },
+                  {
+                    label: 'Twitter',
+                    secondIcon: 'alarm',
+                    value: 'twtr'
+                  }
+                ]"
+              />
+            </q-field>
+          </div>
+        </q-collapsible>
+        <q-collapsible icon="perm_identity" label="Second">
+          <div>
+            Content
+          </div>
+        </q-collapsible>
+        <q-collapsible icon="shopping_cart" label="Third">
+          <div>
+            Content
+          </div>
+        </q-collapsible>
+      </q-list>
+    </q-layout-drawer>
+
+    <q-layout-drawer
+      side="right"
+      v-model="rightDrawerOpen"
+      :content-class="$q.theme === 'mat' ? 'bg-grey-2' : null"
+    >
+       <q-list
         no-border
         link
         inset-delimiter
       >
-        <q-list-header>Essential Links</q-list-header>
+        <q-list-header><img alt="Quasar logo" src="~assets/quasar-logo-full.svg"/></q-list-header>
         <q-item @click.native="openURL('http://quasar-framework.org')">
           <q-item-side icon="school" />
           <q-item-main label="Docs" sublabel="quasar-framework.org" />
@@ -54,12 +109,38 @@
           <q-item-side icon="rss feed" />
           <q-item-main label="Twitter" sublabel="@quasarframework" />
         </q-item>
-      </q-list> -->
+      </q-list>
     </q-layout-drawer>
 
     <q-page-container>
       <router-view />
     </q-page-container>
+
+    <!-- Footer -->
+    <q-layout-footer
+      v-model="footerOpen"
+    >
+      <q-toolbar
+        color="primary"
+        :inverted="$q.theme === 'mat'"
+        :glossy="$q.theme === 'ios'"
+      >
+        <q-btn
+          flat
+          dense
+          @click="leftDrawerOpen = !leftDrawerOpen"
+          aria-label="Menu"
+        >
+          <q-icon name="menu" />
+        </q-btn>
+
+        <q-toolbar-title>
+          Quasar App
+          <div slot="subtitle">Running on Quasar v{{ $q.version }}</div>
+        </q-toolbar-title>
+      </q-toolbar>
+    </q-layout-footer>
+
   </q-layout>
 </template>
 
@@ -70,7 +151,11 @@ export default {
   name: 'MyLayout',
   data () {
     return {
-      leftDrawerOpen: this.$q.platform.is.desktop
+      leftDrawerOpen: this.$q.platform.is.desktop,
+      rightDrawerOpen: this.$q.platform.is.desktop,
+      footerOpen: this.$q.platform.is.desktop,
+      test1: 'test1',
+      test2: 'test1'
     }
   },
   computed: {

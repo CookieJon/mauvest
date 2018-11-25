@@ -24,13 +24,24 @@ module.exports = function (ctx) {
       // vueCompiler: true,
       // gzip: true,
       // analyze: true,
-      // extractCSS: false,
+      // extractCSS: false,      
       extendWebpack (cfg) {
+        // enforce: 'pre',
+        // test: /\.(js|vue)$/,
+        // loader: 'eslint-loader',
+        // exclude: /(node_modules|quasar)/,   
+        cfg.module.rules.push({
+          test: /\.pug$/,
+          loader: 'pug-plain-loader'
+        })     
         cfg.module.rules.push({
           enforce: 'pre',
           test: /\.(js|vue)$/,
           loader: 'eslint-loader',
-          exclude: /(node_modules|quasar)/
+          exclude: /(node_modules|quasar)/,
+          options: {
+            fix: true
+          }
         })
       }
     },
@@ -45,6 +56,7 @@ module.exports = function (ctx) {
       components: [
         'QLayout',
         'QLayoutHeader',
+        'QLayoutFooter',
         'QLayoutDrawer',
         'QPageContainer',
         'QPage',
@@ -53,6 +65,7 @@ module.exports = function (ctx) {
         'QBtn',
         'QIcon',
         'QList',
+        'QCollapsible',
         'QListHeader',
         'QItem',
         'QItemMain',
@@ -67,7 +80,8 @@ module.exports = function (ctx) {
         // Editable data table bits
         'QInput',
         'QField',
-        'QPopupEdit'
+        'QPopupEdit',
+        'QSelect'
       ],
       directives: [
         'Ripple'

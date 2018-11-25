@@ -1,0 +1,56 @@
+
+
+ReportAction.java
+ReportBD.java 
+    > getReportCriteria()
+
+
+MODULE: "SM"
+databaseUsername: "MAYJO"
+SUMMIT's REPORTID= 7561
+
+
+
+
+
+
+SECURITY PROFILE:
+
+Id: VIP_PCM_ADMIN:  Name: "PCM Admin"
+
+    VIP_PCM_SUBSIDY*
+    VIP_PCM_WAIVER*
+    VIP_PCM_GOVT* <--- NEW!
+
+--------------------------------------------------------------------
+
+NEW:::::::::
+
+Menu - VIP_PCM_GOVT_STRATEGY_MENU     Government Strategies
+Menu - VIP_PCM_GOVT_STRATEGY_DT_MENU  Government Strategy Detail
+Task - VIP_PCM_GOVT_STRATEGY_DETAIL   Government Strategy Detail
+
+
+MenuItem  Menu:VIP_PCM_GOVT_STRATEGY_MENU                 ParentMenu:VIP_PCM_MENU 
+MenuItem  Menu:VIP_PCM_GOVT_STRATEGY_DT_MENU              ParentMenu:VIP_PCM_GOVT_STRATEGY_MENU 
+MenuItem  Task:VIP_PCM_GOVT_STRATEGY_DETAIL    ParentMenu:VIP_PCM_GOVT_STRATEGY_DT_MENU 
+
+
+--------------------------------------------------------------------
+
+
+
+
+
+OLD:::::::::
+
+Menu - VIP_PCM_WAIVER_STRATEGY_MENU     Waiver Strategies
+Menu - VIP_PCM_WAIVER_STRATEGY_DT_MENU  Waiver Strategy Detail
+Task - VIP_PCM_WAIVER_STRATEGY_DETAIL   Waiver Strategy Detail
+
+
+MenuItem  Menu:VIP_PCM_WAIVER_STRATEGY_MENU                 ParentMenu:VIP_PCM_MENU 
+MenuItem  Menu:VIP_PCM_WAIVER_STRATEGY_DT_MENU              ParentMenu:VIP_PCM_WAIVER_STRATEGY_MENU 
+MenuItem  Task:ParentMenu:VIP_PCM_WAIVER_STRATEGY_DETAIL    ParentMenu:VIP_PCM_WAIVER_STRATEGY_DT_MENU 
+
+
