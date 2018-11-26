@@ -1,17 +1,26 @@
 <template lang='pug'>
-  q-layout(view="hHh LpR fFf" :style="bgStyle")
-    q-layout-header(style='-webkit-app-region: drag')
+  q-layout(view="hHh LpR fFf" :xstyle="bgStyle")
+    q-layout-header.bg-dark(style='-webkit-app-region: drag')
       q-toolbar(
-        color="primary"
-        :inverted="$q.theme === 'mat'"
-        :glossy="$q.theme === 'ios'"
+        xcolor="dark"
+        xtext-color='white'
+        :inverted="false"
+        :xinverted="$q.theme === 'mat'"
+        :xglossy="$q.theme === 'ios'"
+      )    
+      q-toolbar(
+        xcolor="dark"
+        xtext-color='white'
+        :inverted="false"
+        :xinverted="$q.theme === 'mat'"
+        :xglossy="$q.theme === 'ios'"
       )
         q-btn(flat size='lg' @click="leftDrawerOpen = !leftDrawerOpen" aria-label="Menu" style='-webkit-app-region: no-drag')
           q-icon(name="menu")
 
         q-toolbar-title
           |Electron
-          div(slot="subtitle") Running on Quasar v{{ $q.version }}
+          //div(slot="subtitle") Running on Quasar v{{ $q.version }}
 
         q-btn(flat size='lg' @click="rightDrawerOpen = !rightDrawerOpen" aria-label="Menu" style='-webkit-app-region: no-drag')
           q-icon(name="menu")
