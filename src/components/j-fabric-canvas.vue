@@ -122,7 +122,7 @@
 
     mounted () {
 
-      self = this
+      let self = this
 
       // Sortable on container purely to drop objs from other sortables.
       let rubaxa = Sortable.create(this.$refs.canvasDropContainer, extend(true, {}, this.options, {

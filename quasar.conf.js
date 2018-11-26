@@ -71,6 +71,8 @@ module.exports = function (ctx) {
         'QItemMain',
         'QItemSide',
 
+        'QColorPicker',
+
         // Addeed data table...
         'QTable',
         'QTh',
