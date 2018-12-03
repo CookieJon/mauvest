@@ -5,7 +5,8 @@ module.exports = function (ctx) {
     // app plugins (/src/plugins)
     plugins: [
       'i18n',
-      'axios'
+      'axios',
+      'moe'
     ],
     css: [
       'app.styl'
@@ -49,7 +50,7 @@ module.exports = function (ctx) {
       // https: true,
       // port: 8080,
       port: 8081, //JM
-      open: true // opens browser window automatically
+      open: false // opens browser window automatically
     },
     // framework: 'all' --- includes everything; for dev only!
     framework: {

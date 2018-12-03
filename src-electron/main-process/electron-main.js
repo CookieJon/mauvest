@@ -17,7 +17,7 @@ function createWindow () {
   mainWindow = new BrowserWindow({
     width: 1000,
     height: 600,
-    useContentSize: false,
+    //useContentSize: false,
     backgroundColor: '#2e2c29',
     frame: false,
     darkTheme : true
@@ -31,6 +31,112 @@ function createWindow () {
 
 
 }
+
+
+
+// Create the Application's main menu
+
+const template = [
+  {
+    label: 'Edit',
+    submenu: [
+      { role: 'undo' },
+      { role: 'redo' },
+      { type: 'separator' },
+      { role: 'cut' },
+      { role: 'copy' },
+      { role: 'paste' },
+      { role: 'pasteandmatchstyle' },
+      { role: 'delete' },
+      { role: 'selectall' }
+    ]
+  },
+  {
+    label: 'View',
+    submenu: [
+      { role: 'reload' },
+      { role: 'forcereload' },
+      { role: 'toggledevtools' },
+      { type: 'separator' },
+      { role: 'resetzoom' },
+      { role: 'zoomin' },
+      { role: 'zoomout' },
+      { type: 'separator' },
+      { role: 'togglefullscreen' }
+    ]
+  },
+  {
+    role: 'window',
+    submenu: [
+      { role: 'minimize' },
+      { role: 'close' }
+    ]
+  },
+  {
+    role: 'help',
+    submenu: [
+      {
+        label: 'Github Repo',
+        click () {
+          require('electron').shell.openExternal('      {\n' +
+          '        label: \'Github Repo\',\n' +
+          '        click () { require(\'electron\').shell.openExternal(\'https://github.com/g-u-c/guc-desktop\') }\n' +
+          '      }')
+        }
+      },
+      {
+        label: 'Utopian.io',
+        click () { require('electron').shell.openExternal('https://utopian.io') }
+      },
+      {
+        label: 'Quasar Docs',
+        click () { require('electron').shell.openExternal('https://quasar-framework.org') }
+      }
+    ]
+  }
+]
+
+if (process.platform === 'darwin') {
+  template.unshift({
+    label: app.getName(),
+    submenu: [
+      { role: 'about' },
+      { type: 'separator' },
+      { role: 'services', submenu: [] },
+      { type: 'separator' },
+      { role: 'hide' },
+      { role: 'hideothers' },
+      { role: 'unhide' },
+      { type: 'separator' },
+      { role: 'quit' }
+    ]
+  })
+
+  // Edit menu
+  template[1].submenu.push(
+    { type: 'separator' },
+    {
+      label: 'Speech',
+      submenu: [
+        { role: 'startspeaking' },
+        { role: 'stopspeaking' }
+      ]
+    }
+  )
+
+  // Window menu
+  template[3].submenu = [
+    { role: 'close' },
+    { role: 'minimize' },
+    { role: 'zoom' },
+    { type: 'separator' },
+    { role: 'front' }
+  ]
+}
+
+const menu = Menu.buildFromTemplate(template)
+Menu.setApplicationMenu(menu)
+
 
 app.on('ready', createWindow)
 

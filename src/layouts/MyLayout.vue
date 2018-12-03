@@ -1,15 +1,8 @@
 <template lang='pug'>
   q-layout(view="hHh LpR fFf" :xstyle="bgStyle")
-    q-layout-header.bg-dark(style='-webkit-app-region: drag')
+    q-layout-header.bg-dark(style='-webkit-app-region: drag')   
       q-toolbar(
-        xcolor="dark"
-        xtext-color='white'
-        :inverted="false"
-        :xinverted="$q.theme === 'mat'"
-        :xglossy="$q.theme === 'ios'"
-      )    
-      q-toolbar(
-        xcolor="dark"
+        color="dark"
         xtext-color='white'
         :inverted="false"
         :xinverted="$q.theme === 'mat'"
@@ -19,7 +12,7 @@
           q-icon(name="menu")
 
         q-toolbar-title
-          |Electron
+          |Test
           //div(slot="subtitle") Running on Quasar v{{ $q.version }}
 
         q-btn(flat size='lg' @click="rightDrawerOpen = !rightDrawerOpen" aria-label="Menu" style='-webkit-app-region: no-drag')
@@ -81,6 +74,7 @@
           </div>
         </q-collapsible>
       </q-list>
+
 
 
     q-layout-drawer(
@@ -147,7 +141,6 @@ export default {
       footerOpen: this.$q.platform.is.desktop,
       test1: 'test1',
       test2: 'test1',
-      
       modelHex: '#C7044B'
     }
   },
@@ -173,5 +166,7 @@ export default {
 }
 </script>
 
-<style>
+<style lang="stylus">
+  .app-menu 
+    height 10px
 </style>

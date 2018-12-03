@@ -1,6 +1,6 @@
 <template lang='pug'>
   <div class="drop-container" ref='canvasDropContainer'>
-    <canvas id='c' width='256' height='256' />
+    <canvas v-dropzone id='c' width='256' height='256' />
   </div>
 </template>
 
@@ -8,6 +8,7 @@
 /* eslint-disable */
   import { extend } from 'quasar'
   import Sortable from 'sortablejs'
+  //
 
   var canvas, upperCanvasEl
 
@@ -57,6 +58,7 @@
 
   export default {
     name: 'j-fabric-canvas',
+    //directives: {dropzone},
     props: {
       // value: Array of canvas' getObjects()
       //
